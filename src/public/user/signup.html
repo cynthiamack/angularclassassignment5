@@ -1,0 +1,52 @@
+
+	<div class="container">
+	      <legend>Sign up for our newsletter</legend>
+	  <div class="container">
+		<form name ='signUpForm'>
+			<input type="text" name="firstName" placeholder="Enter first name"
+				ng-model="reg.user.firstName"
+				required>
+				<span class="validation" ng-if="signUpForm.firstName.$error.required && signUpForm.firstName.$touched">
+					First name is required.
+				</span>
+				<br>
+
+			<input type="text" name="lastName" placeholder="Enter last name"
+				ng-model="reg.user.lastName"
+				required>
+				<span class="validation" ng-if="signUpForm.lastName.$error.required && signUpForm.lastName.$touched">
+					Last name is required.
+				</span>
+				<br>
+
+			<input type="email" name="email" placeholder="Email"
+	          	ng-model="reg.user.email"
+	          	required>
+	          	<span class="validation" ng-if="signUpForm.email.$invalid && signUpForm.email.$touched">
+	            	Must be a valid email address: handle@domain format
+	          </span>
+	          <br>
+
+	         <input type="text" name="phone" placeholder="Phone ###-###-####"
+	          	ng-model="reg.user.phone"
+	          	pattern="(\d{3})-(\d{3})-(\d{4})">
+	         	<span class="validation" ng-if="signUpForm.phone.$invalid && signUpForm.phone.$touched">
+	            	Phone must be in the format ###-###-####.
+	         	</span>
+	          <br>
+
+	         <input type="text" name="shortName" placeholder="Enter favorite dish #"
+				ng-model="reg.user.shortName"
+				required>
+				<span class="validation" ng-if="signUpForm.shortName.$error.required && signUpForm.shortName.$touched">
+					Favorite dish is required
+				</span>
+				<span class="error" ng-if="reg.error" ng-cloack> {{ reg.errorMessage }}</span>
+				<br>
+				<br>
+	         <button
+	          	ng-disabled="signUpForm.$invalid"
+	          	ng-click="reg.submit()">Sign me up!</button>
+		</form>
+		<div class="success" ng-if="reg.error==false">Your information has been saved</div>
+	</div>
